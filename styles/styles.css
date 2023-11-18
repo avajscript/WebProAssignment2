@@ -1,0 +1,30 @@
+/* Styling for fonts like font-family and sizing */
+@import './fonts.css';
+/* Reusable font classes */
+
+@import './defaults.css';
+
+/* Colors
+Re-use these colors throughout the css so they can be changed and for clarity
+ */
+
+:root {
+    --dark-turq: #194759;
+    --turq: #7AC2BB;
+    --light-turq: #A7F2E4;
+    --white: #EBF2F1;
+    --black: #111212;
+    --desat-green: #4F7369;
+    --red: #CB4343;
+    --light-red: #FFE0E0;
+    --green: #43D262;
+    --light-green: #E8FFED;
+    --yellow: #C7D243;
+    --light-yellow: #FEFFD7;
+}
+/* End of colors */
+
+* {
+    margin: 0;
+    padding: 0;
+}
