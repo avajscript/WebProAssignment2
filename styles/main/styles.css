@@ -1,0 +1,116 @@
+/* Styling for fonts like font-family and sizing */
+@import '../fonts.css';
+/* Button styling */
+@import '../buttons/buttons.css';
+/* Reusable font classes */
+@import '../defaults.css';
+/* Colors
+Re-use these colors throughout the css so they can be changed and for clarity
+ */
+:root {
+  --dark-turq: #194759;
+  --turq: #7AC2BB;
+  --light-turq: #A7F2E4;
+  --white: #EBF2F1;
+  --black: #111212;
+  --desat-green: #4F7369;
+  --red: #CB4343;
+  --light-red: #FFE0E0;
+  --green: #43D262;
+  --light-green: #E8FFED;
+  --yellow: #C7D243;
+  --light-yellow: #FEFFD7;
+}
+
+/* Inputs */
+input[type=text], input[type=password] {
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-color: var(--white);
+  padding: 8px 8px;
+  max-width: 400px;
+  width: 100%;
+}
+input[type=text]:focus, input[type=password]:focus {
+  outline: none;
+  border: 2px solid var(--turq);
+}
+
+.input-field {
+  margin-bottom: 24px;
+}
+
+/* End of inputs */
+label h5 {
+  margin-bottom: 8px;
+}
+
+/* End of inputs */
+.white {
+  color: var(--white);
+}
+
+/* End of colors */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--turq);
+}
+
+.header {
+  padding: 16px 32px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero > * {
+  width: 100%;
+  flex-basis: 50%;
+  width: 50%;
+}
+
+.default-page {
+  padding: 32px;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+  }
+  .hero > * {
+    width: 100%;
+  }
+  .default-page {
+    padding: 16px;
+  }
+}
+/* End of Responsive Design */
+/* Signup page */
+.input-form {
+  background-color: #fff;
+  border-radius: 16px;
+  max-width: 800px;
+  padding: 5% 10%;
+}
+
+/* End of signup page */
+
+/*# sourceMappingURL=styles.css.map */
