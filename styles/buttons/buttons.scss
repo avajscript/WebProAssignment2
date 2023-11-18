@@ -1,0 +1,27 @@
+:root {
+    --dark-turq: #194759;
+    --turq: #7EBFB3;
+    --light-turq: #A7F2E4;
+    --white: #EBF2F1;
+    --desat-green: #4F7369;
+    --black: #111212;
+}
+
+.default-btn {
+    background-color: var(--turq);
+    border: 2px solid var(--dark-turq);
+    padding: 8px 16px;
+    border-radius: 32px;
+    transition: color .25s ease, background-color .25s ease;
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.default-btn:hover {
+    h2,h3,h4,h5,p {
+        color: var(--turq);
+    }
+    background-color: var(--dark-turq);
+
+}

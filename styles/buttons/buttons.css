@@ -1,0 +1,26 @@
+:root {
+  --dark-turq: #194759;
+  --turq: #7EBFB3;
+  --light-turq: #A7F2E4;
+  --white: #EBF2F1;
+  --desat-green: #4F7369;
+  --black: #111212;
+}
+
+.default-btn {
+  background-color: var(--turq);
+  border: 2px solid var(--dark-turq);
+  padding: 8px 16px;
+  border-radius: 32px;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+.default-btn a:hover {
+  text-decoration: none;
+}
+
+.default-btn:hover {
+  background-color: var(--dark-turq);
+}
+.default-btn:hover h2, .default-btn:hover h3, .default-btn:hover h4, .default-btn:hover h5, .default-btn:hover p {
+  color: var(--turq);
+}/*# sourceMappingURL=buttons.css.map */

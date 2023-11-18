@@ -7,18 +7,26 @@
     --light-turq: #A7F2E4;
     --white: #EBF2F1;
     --desat-green: #4F7369;
+    --black: #111212;
 }
 /* Setting heading fonts */
 h1, h2, h3, h4, h5, h6 {
     font-family: Roboto;
+    color: var(--dark-turq);
+    
 }
 
 p {
     font-family: Raleway;
+    color: var(--black);
 }
 
 .bold {
     font-weight: 600;
+}
+
+.regular {
+    font-weight: 400;
 }
   
 /* These fonts use a typescale of 1.13, desktop base font size is 18 and mobile is 16 */
