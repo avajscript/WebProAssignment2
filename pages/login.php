@@ -9,7 +9,7 @@
     <body>
         <main>
             <?php
-            require_once "../components/header.php";
+            include("../components/header.php");
             ?>
             <form class='input-form'>
                 <div class="input-field">
@@ -29,6 +29,18 @@
                         <input type="password" placeholder="password">
                     </label>
                 </div>
+
+                <div class="mar-bottom-32">
+                    <p>Don't have an account?
+                        <b>
+                        <a href="signup.php" class = 'green'>
+                            Sign up here
+                        </a>
+                        </b></p>
+                </div>
+                <button class="anti-default-btn">
+                    <h5>LOG IN</h5>
+                </button>
             </form>
         </main>
 
