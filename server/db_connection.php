@@ -2,8 +2,8 @@
 function OpenCon()
 {
     $dbhost = 'localhost';
-    $dbuser = 'clientuser';
-    $dbpass = 'password123';
+    $dbuser = 'root';
+    $dbpass = '';
     $dbname = 'task_manager';
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
     // Check connection if (!$conn)
