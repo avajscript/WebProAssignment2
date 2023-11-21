@@ -29,6 +29,14 @@ Re-use these colors throughout the css so they can be changed and for clarity
 
 /* Inputs */
 
+.error{
+  color: var(--red);
+}
+
+.error-border {
+  border: 2px solid var(--red);
+}
+
 input[type=text], input[type=password] {
   font-size: 16px;
   border-radius: 8px;
@@ -140,3 +148,5 @@ a:hover {
 
 
 /* End of Reusable */
+
+
