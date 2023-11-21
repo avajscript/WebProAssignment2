@@ -14,5 +14,6 @@
         <?php
         include('../components/header.php');
         ?>
+        <h1>Your tasks</h1>
     </body>
 </html>
