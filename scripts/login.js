@@ -11,18 +11,12 @@ const errors = {
         reg: /^.{8,}$/,
         errorElem: document.getElementById('password-error')
     },
-    password2: {
-        message: "Passwords must match",
-        elem: document.getElementById('passwordConfirm'),
-        errorElem: document.getElementById('confirm-password-error')
-    }
 };
 
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
 
-const validateForm = (e) => {
+const validateForm = () => {
 
     // returns false if any of the fields are invalid
     let formState = true;
@@ -38,40 +32,8 @@ const validateForm = (e) => {
         formState = false;
     }
 
-    // test if password match and output error if not
-    if (errors.password.elem.value !== errors.password2.elem.value) {
-        errors.password2.errorElem.innerHTML = errors.password2.message;
-        formState = false;
-    }
-
-
     return formState;
 }
-
-const validateLogin = () => {
-    // returns false if any of the fields are invalid
-    let formState = true;
-    // test if email is not valid and outputs error if invalid
-    if (!errors.email.reg.test(errors.email.elem.value)) {
-        errors.email.errorElem.innerHTML = errors.email.message;
-        formState = false;
-    }
-
-    // test if password is not valid and outputs error if invalid
-    if (!errors.password.reg.test(errors.password.elem.value)) {
-        errors.password.errorElem.innerHTML = errors.password.message;
-        formState = false;
-    }
-
-    // test if password match and outputs error if invalid
-    if (errors.password.elem.value !== errors.password2.elem.value) {
-        errors.password2.errorElem.innerHTML = errors.password2.message;
-        formState = false;
-    }
-
-    return formState;
-}
-
 
 // Validates a specific field when the text changes. Can be used for email or password
 const validateField = (fieldObj) => {

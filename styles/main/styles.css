@@ -4,6 +4,13 @@
 @import '../buttons/buttons.css';
 /* Reusable font classes */
 @import '../defaults.css';
+.black-icon {
+  color: var(--black);
+}
+.black-icon:hover {
+  color: var(--grey);
+}
+
 /* Colors
 Re-use these colors throughout the css so they can be changed and for clarity
  */
@@ -13,6 +20,7 @@ Re-use these colors throughout the css so they can be changed and for clarity
   --light-turq: #A7F2E4;
   --white: #EBF2F1;
   --black: #111212;
+  --grey: #8E8E8E;
   --desat-green: #4F7369;
   --red: #CB4343;
   --light-red: #FFE0E0;
@@ -127,5 +135,23 @@ a:hover {
 /* End of signup page */
 /* Reusable */
 /* End of Reusable */
+.bold {
+  font-weight: bold;
+}
+
+.popup {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 8px 12px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  border: 1px solid var(--red);
+}
+.popup p {
+  color: var(--red);
+}
 
 /*# sourceMappingURL=styles.css.map */
