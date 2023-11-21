@@ -1,8 +1,5 @@
 <!-- Written by Matthew Pierce -->
 <?php
-session_start();
-?>
-<?php
 include '../server/db_connection.php';
 $conn = OpenCon();
 // check if fields are set
