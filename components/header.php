@@ -8,7 +8,7 @@ session_start();
     <div class="flex align-center">
         <h5 class='mar-right-32'>
 
-            <a href="./pages/tasks.php">
+            <a href="./tasks.php">
                 My Tasks
             </a>
         </h5>
