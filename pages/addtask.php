@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Continue with your code using $user_id
     } else {
     // Handle the case where user_id is not set
-    echo "User is not authenticated.";
+    echo "User is not logged in.";
     }
 
     // You should perform proper validation and sanitation of user inputs here

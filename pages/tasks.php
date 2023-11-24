@@ -3,6 +3,13 @@
 session_start();
 include "../server/db_connection.php";
 include "../server/functions.php";
+
+// Check if the user is not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");  // if user is not logged in, redirect to the login page
+    exit();
+}
+
 $conn = OpenCon();
 // check if user logged in
 $pastDueTasks = "";
