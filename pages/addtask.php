@@ -92,7 +92,7 @@ CloseCon($conn);
             <div class="input-field">
                 <label>
                     <h5>Due Date</h5>
-                    <input class="mar-bottom-8" type="text" name="due_date" id="due_date" placeholder="YYYY-MM-DD">
+                    <input class="mar-bottom-8" type="date" name="due_date" id="due_date" placeholder="YYYY-MM-DD">
                 </label>
                 <p id="due_date-error" class="error"></p>
             </div>

@@ -1,4 +1,10 @@
 <!--Tasks.php -->
+<?php
+session_start();
+
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,12 +21,17 @@
         <?php
         include('../components/header.php');
         ?>
-        <h1>Your tasks</h1>
-        <h5 class='mar-right-32'>
+        <h1 class ='mar-bottom-16'>Your tasks</h1>
+        <div class="flex">
+        <div class="anti-default-btn">
+            <h5>
 
-            <a href="./addtask.php">
-                Add Task
-            </a>
-        </h5>
+                <a href="./addtask.php">
+                    Add Task
+                </a>
+            </h5>
+        </div>
+        </div>
+
     </body>
 </html>

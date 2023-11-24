@@ -39,7 +39,7 @@ Re-use these colors throughout the css so they can be changed and for clarity
   border: 2px solid var(--red);
 }
 
-input[type=text], input[type=password] {
+input, textarea {
   font-size: 16px;
   border-radius: 8px;
   border: 2px solid transparent;
@@ -48,9 +48,13 @@ input[type=text], input[type=password] {
   max-width: 400px;
   width: 100%;
 }
-input[type=text]:focus, input[type=password]:focus {
+input:focus, textarea:focus {
   outline: none;
   border: 2px solid var(--turq);
+}
+
+input[type=date] {
+  max-width: 200px;
 }
 
 .input-field {

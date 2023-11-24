@@ -13,6 +13,7 @@
   padding: 8px 16px;
   border-radius: 32px;
   transition: color 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
 }
 .default-btn a:hover {
   text-decoration: none;
@@ -34,13 +35,13 @@
   cursor: pointer;
 }
 .anti-default-btn h2, .anti-default-btn h3, .anti-default-btn h4, .anti-default-btn h5, .anti-default-btn p {
-  color: var(--white);
+  color: var(--light-turq);
 }
 .anti-default-btn a:hover {
   text-decoration: none;
 }
 .anti-default-btn:hover {
-  background-color: var(--white);
+  background-color: var(--light-turq);
 }
 .anti-default-btn:hover h2, .anti-default-btn:hover h3, .anti-default-btn:hover h4, .anti-default-btn:hover h5, .anti-default-btn:hover p {
   color: var(--dark-turq);

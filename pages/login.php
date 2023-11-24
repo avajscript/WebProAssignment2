@@ -1,8 +1,11 @@
-<!-- Written by Matthew Piece -->
+
 <?php
+session_start();
+
 include '../server/db_connection.php';
 $conn = OpenCon();
 $error = false;
+
 if (isset($_POST['email'])) {
 
     // Clean post fields
@@ -20,10 +23,15 @@ if (isset($_POST['email'])) {
     // fetch query
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     $rows = mysqli_num_rows($result);
-    echo "$rows";
+    $row = mysqli_fetch_assoc($result);
+    // close the connection
+    CloseCon($conn);
     // redirect if user is found
     if ($rows == 1) {
+        // set the session
         $_SESSION['email'] = $email;
+        $_SESSION['user_id'] = $row['user_id'];
+
         header('Location: tasks.php');
     } // output error is user not found
     else {

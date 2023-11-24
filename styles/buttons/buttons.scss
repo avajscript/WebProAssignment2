@@ -13,7 +13,7 @@
   padding: 8px 16px;
   border-radius: 32px;
   transition: color .25s ease, background-color .25s ease;
-
+  cursor: pointer;
   a:hover {
     text-decoration: none;
   }
@@ -36,13 +36,13 @@
   transition: color .25s ease, background-color .25s ease;
   cursor: pointer;
   h2, h3, h4, h5, p {
-    color: var(--white);
+    color: var(--light-turq);
   }
   a:hover {
     text-decoration: none;
   }
   &:hover {
-    background-color: var(--white);
+    background-color: var(--light-turq);
     h2, h3, h4, h5, p {
       color: var(--dark-turq);
     }

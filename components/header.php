@@ -1,9 +1,9 @@
 <!-- Header.php -->
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    // Only start the session if it hasn't been started already
-    session_start();
-}
+    //session_start();
+
+
+
 ?>
 <nav class='header flex space-between align-center'>
 
