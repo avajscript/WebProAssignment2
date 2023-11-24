@@ -57,13 +57,13 @@
   transition: color .25s ease, background-color .25s ease;
   cursor: pointer;
   h2, h3, h4, h5, p {
-    color: var(--light-turq);
+    color: var(--turq);
   }
   a:hover {
     text-decoration: none;
   }
   &:hover {
-    background-color: var(--light-turq);
+    background-color: var(--turq);
     h2, h3, h4, h5, p {
       color: var(--dark-turq);
     }

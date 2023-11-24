@@ -56,13 +56,13 @@
   cursor: pointer;
 }
 .anti-default-btn h2, .anti-default-btn h3, .anti-default-btn h4, .anti-default-btn h5, .anti-default-btn p {
-  color: var(--light-turq);
+  color: var(--turq);
 }
 .anti-default-btn a:hover {
   text-decoration: none;
 }
 .anti-default-btn:hover {
-  background-color: var(--light-turq);
+  background-color: var(--turq);
 }
 .anti-default-btn:hover h2, .anti-default-btn:hover h3, .anti-default-btn:hover h4, .anti-default-btn:hover h5, .anti-default-btn:hover p {
   color: var(--dark-turq);

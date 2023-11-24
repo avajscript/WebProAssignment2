@@ -98,7 +98,7 @@ CloseCon($conn);
             </div>
 
             <p id="errorMessage" class="error mar-bottom-8"><?php echo $error ? $error_message : ''; ?></p>
-            <button class="anti-default-btn">
+            <button class="anti-default-white-btn">
                 <h5>ADD TASK</h5>
             </button>
         </form>

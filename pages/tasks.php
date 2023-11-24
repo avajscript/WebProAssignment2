@@ -5,11 +5,12 @@ include "../server/db_connection.php";
 include "../server/functions.php";
 $conn = OpenCon();
 // check if user logged in
+$pastDueTasks = "";
+$upcomingTasks = "";
+$todayTasks = "";
 if(isset($_SESSION['user_id'])) {
     // initializing variables
-    $pastDueTasks = "";
-    $upcomingTasks = "";
-    $todayTasks = "";
+
     // get user id
     $user_id = $_SESSION['user_id'];
     // fetch all users tasks
