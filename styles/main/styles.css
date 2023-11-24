@@ -23,9 +23,9 @@ Re-use these colors throughout the css so they can be changed and for clarity
   --grey: #8E8E8E;
   --desat-green: #4F7369;
   --red: #CB4343;
-  --light-red: #FFE0E0;
+  --light-red: #f6bebe;
   --green: #43D262;
-  --light-green: #E8FFED;
+  --light-green: #cbf6d4;
   --yellow: #C7D243;
   --light-yellow: #FEFFD7;
 }
@@ -99,6 +99,10 @@ a:hover {
   text-decoration: underline;
 }
 
+a.no-underline {
+  text-decoration: none;
+}
+
 .hero {
   max-width: 1200px;
   margin: 0 auto;
@@ -155,6 +159,93 @@ a:hover {
   border: 1px solid var(--red);
 }
 .popup p {
+  color: var(--red);
+}
+
+.circle, .circle-green, .circle-yellow, .circle-red {
+  width: 8px;
+  height: 8px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.circle-red {
+  background-color: var(--red);
+  outline: 8px solid var(--light-red);
+}
+
+.circle-yellow {
+  background-color: var(--yellow);
+  outline: 8px solid var(--light-yellow);
+}
+
+.circle-green {
+  background-color: var(--green);
+  outline: 8px solid var(--light-green);
+}
+
+.task-header {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.task-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.task-holder {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 12px 12px;
+  max-width: 400px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+.task-holder .task {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  transition: background-color 0.25s ease;
+}
+.task-holder .task:hover {
+  background-color: var(--light-turq);
+}
+.task-holder .task:active {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.date, .date-passed, .date-today, .date-normal {
+  display: inline-block;
+  width: auto;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.date-normal {
+  background-color: var(--light-yellow);
+}
+.date-normal p {
+  color: var(--red);
+}
+
+.date-today {
+  background-color: var(--light-green);
+}
+.date-today p {
+  color: var(--green);
+}
+
+.date-passed {
+  background-color: var(--light-red);
+}
+.date-passed p {
   color: var(--red);
 }
 

@@ -32,9 +32,9 @@ Re-use these colors throughout the css so they can be changed and for clarity
   --grey: #8E8E8E;
   --desat-green: #4F7369;
   --red: #CB4343;
-  --light-red: #FFE0E0;
+  --light-red: #f6bebe;
   --green: #43D262;
-  --light-green: #E8FFED;
+  --light-green: #cbf6d4;
   --yellow: #C7D243;
   --light-yellow: #FEFFD7;
 }
@@ -112,7 +112,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
+a.no-underline{
+  text-decoration: none;
+}
 .hero {
   max-width: 1200px;
   margin: 0 auto;
@@ -188,3 +190,103 @@ a:hover {
 }
 
 // End of popup
+
+// Tasks page
+
+.circle {
+  width: 8px;
+  height: 8px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.circle-red {
+  @extend .circle;
+  background-color: var(--red);
+  outline: 8px solid var(--light-red);
+}
+
+
+.circle-yellow {
+  @extend .circle;
+  background-color: var(--yellow);
+  outline: 8px solid var(--light-yellow);
+}
+
+
+.circle-green {
+  @extend .circle;
+  background-color: var(--green);
+  outline: 8px solid var(--light-green);
+}
+
+.task-header {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+.task-section {
+display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.task-holder {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: 12px 12px;
+  max-width: 400px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  justify-content: center;
+  .task {
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 16px;
+    background-color: #fff;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    transition: background-color .25s ease;
+    &:hover{
+      background-color: var(--light-turq);
+
+    }
+    &:active {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+  }
+}
+
+.date {
+  display: inline-block;
+  width: auto;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.date-normal {
+  @extend .date;
+  background-color: var(--light-yellow);
+  p {
+    color: var(--red);
+  }
+}
+
+.date-today {
+  @extend .date;
+  background-color: var(--light-green);
+  p {
+    color: var(--green);
+  }
+}
+.date-passed {
+  @extend .date;
+  background-color: var(--light-red);
+
+  p {
+    color: var(--red);
+  }
+}
+
+
+// End of tasks page
