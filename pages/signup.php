@@ -53,7 +53,7 @@ if (isset($_REQUEST['email']) && isset($_REQUEST['password'])) {
             <div class="input-field">
                 <label>
                     <h5>
-                        Email Address *??
+                        Email Address *
                     </h5>
                     <input class='mar-bottom-8' type="text" name='email' id='email'
                            placeholder='johndoe@gmail.com'>
@@ -92,7 +92,7 @@ if (isset($_REQUEST['email']) && isset($_REQUEST['password'])) {
                         </a>
                     </b></p>
             </div>
-            <button type='submit' class="anti-default-btn" onclick="validateForm()">
+            <button type='submit' class="anti-default-white-btn" onclick="validateForm()">
                 <h5>SIGN UP</h5>
             </button>
         </form>

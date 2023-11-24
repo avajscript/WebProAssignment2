@@ -26,6 +26,27 @@
   color: var(--turq);
 }
 
+.anti-default-white-btn {
+  background-color: var(--dark-turq);
+  border: 2px solid var(--dark-turq);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
+}
+.anti-default-white-btn h2, .anti-default-white-btn h3, .anti-default-white-btn h4, .anti-default-white-btn h5, .anti-default-white-btn p {
+  color: var(--white);
+}
+.anti-default-white-btn a:hover {
+  text-decoration: none;
+}
+.anti-default-white-btn:hover {
+  background-color: var(--white);
+}
+.anti-default-white-btn:hover h2, .anti-default-white-btn:hover h3, .anti-default-white-btn:hover h4, .anti-default-white-btn:hover h5, .anti-default-white-btn:hover p {
+  color: var(--dark-turq);
+}
+
 .anti-default-btn {
   background-color: var(--dark-turq);
   border: 2px solid var(--dark-turq);

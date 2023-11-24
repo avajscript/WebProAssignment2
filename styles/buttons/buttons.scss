@@ -28,6 +28,27 @@
 
 }
 
+.anti-default-white-btn {
+  background-color: var(--dark-turq);
+  border: 2px solid var(--dark-turq);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: color .25s ease, background-color .25s ease;
+  cursor: pointer;
+  h2, h3, h4, h5, p {
+    color: var(--white);
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: var(--white);
+    h2, h3, h4, h5, p {
+      color: var(--dark-turq);
+    }
+  }
+}
+
 .anti-default-btn {
   background-color: var(--dark-turq);
   border: 2px solid var(--dark-turq);

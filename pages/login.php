@@ -59,7 +59,7 @@ if (isset($_POST['email'])) {
                 <div class="input-field">
                     <label>
                         <h5>
-                            Email Address *??
+                            Email Address *
                         </h5>
                         <input class='mar-bottom-8' type="text" name='email' id='email'
                                placeholder='johndoe@gmail.com'>
@@ -93,7 +93,7 @@ if (isset($_POST['email'])) {
                     }
                     ?>
                 </p>
-                <button class="anti-default-btn">
+                <button class="anti-default-white-btn">
                     <h5>LOG IN</h5>
                 </button>
             </form>
