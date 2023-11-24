@@ -1,3 +1,4 @@
+<!--Tasks.php -->
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,5 +16,11 @@
         include('../components/header.php');
         ?>
         <h1>Your tasks</h1>
+        <h5 class='mar-right-32'>
+
+            <a href="./addtask.php">
+                Add Task
+            </a>
+        </h5>
     </body>
 </html>

@@ -1,5 +1,9 @@
+<!-- Header.php -->
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Only start the session if it hasn't been started already
+    session_start();
+}
 ?>
 <nav class='header flex space-between align-center'>
 
@@ -14,7 +18,7 @@ session_start();
         </h5>
         <h5 class='mar-right-32'>
 
-            <a href="./pages/tasks.php">
+            <a href="../pages/tasks.php">
                 My Tasks
             </a>
         </h5>
