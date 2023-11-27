@@ -78,7 +78,6 @@ if(isset($_SESSION['user_id'])) {
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../styles/main/styles.css">
-        <script src='../scripts/tasks.js'></script>
 
         <title>Tasks Page</title>
     </head>

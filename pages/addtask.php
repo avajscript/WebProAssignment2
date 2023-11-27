@@ -29,9 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Convert the date and time to MySQL DATETIME format
         $due_date = date('Y-m-d H:i:s', strtotime($due_date));
-    } else {
-        // Handle the case where due_date is not provided
-        // This depends on your application logic
     }
 
     // Check if user_id is set in the session

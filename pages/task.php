@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-/*
- * TODO:
- * Write logic to fetch single task based on get request
- * Url looks like tasks.php?id=5
- * Use $_GET["id"] and fetch from database and render to screen
- * Add a delete button too
- */
-
 include "../server/db_connection.php";
 include "../server/functions.php";
 
