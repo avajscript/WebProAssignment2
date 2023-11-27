@@ -32,6 +32,8 @@ function getDateElem(String $date):array {
 
 }
 
+// returns a colored circle (red/yellow/green) with state (past due, upcoming, today)
+// based on the given time string (date-passed, date-upcoming, date-today)
 function getTimeStateElem(String $timeState):String {
     // text to be returned
     $text = "";
