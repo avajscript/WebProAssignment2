@@ -67,7 +67,9 @@ if (isset($_GET['id'])) {
                 
                 <!-- Edit and Delete options -->
                 <div class="flex">
+                    <!-- Link to Edit Task -->
                     <a href="./edit_task.php?id=<?php echo $task_id; ?>" class="default-btn mar-right-8">Edit</a>
+                    <!-- Link to Delete Task -->
                     <a href="./delete_task.php?id=<?php echo $task_id; ?>" class="default-btn delete-btn">Delete</a>
                 </div>
             </div>
