@@ -20,7 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];     // The updated title of the task
     $description = $_POST['description']; // The updated description
     $status = $_POST['status'];   // The updated status
-    $due_date = $_POST['due_date']; // The updated due date
+    
+    // Check if due_date is set and not empty
+    if (!empty($_POST['due_date'])) {
+        $due_date = $_POST['due_date'];
+
+        // Check if the time part is included in the due_date
+        if (strlen($due_date) <= 10) {
+        // If only date is provided, append the default time '23:59:00'
+            $due_date .= ' 23:59:00';
+        }
+
+        // Convert the date and time to MySQL DATETIME format
+        $due_date = date('Y-m-d H:i:s', strtotime($due_date));
+    } else {
+    // Handle the case where due_date is not provided
+    // This depends on your application logic
+    }
 
     // Prepare the SQL query for updating the task
     $query = "UPDATE tasks SET title=?, description=?, status=?, due_date=? WHERE task_id=? AND user_id=?";

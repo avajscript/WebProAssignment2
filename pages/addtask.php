@@ -16,34 +16,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $status = $_POST['status'];
-    $due_date = $_POST['due_date'];
+    
+    // Check if due_date is set and not empty
+    if (!empty($_POST['due_date'])) {
+        $due_date = $_POST['due_date'];
 
+        // Check if the time part is included in the due_date
+        if (strlen($due_date) <= 10) {
+            // If only date is provided, append the default time '23:59:00'
+            $due_date .= ' 23:59:00';
+        }
+
+        // Convert the date and time to MySQL DATETIME format
+        $due_date = date('Y-m-d H:i:s', strtotime($due_date));
+    } else {
+        // Handle the case where due_date is not provided
+        // This depends on your application logic
+    }
+
+    // Check if user_id is set in the session
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
     if ($user_id !== null) {
-    // Continue with your code using $user_id
+        // Insert the task into the database
+        $query = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "issss", $user_id, $title, $description, $status, $due_date);
+
+        if (mysqli_stmt_execute($stmt)) {
+            header('Location: tasks.php'); // Redirect to the tasks page after successful insertion
+            exit();
+        } else {
+            $error = true;
+            $error_message = "Error adding the task. Please try again.";
+        }
+
+        mysqli_stmt_close($stmt);
     } else {
-    // Handle the case where user_id is not set
-    echo "User is not logged in.";
+        // Handle the case where user_id is not set
+        echo "User is not logged in.";
     }
-
-    // You should perform proper validation and sanitation of user inputs here
-
-    // Insert the task into the database
-    $query = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    $user_id = $_SESSION['user_id']; // Make sure to set user_id when the user logs in
-    mysqli_stmt_bind_param($stmt, "issss", $user_id, $title, $description, $status, $due_date);
-
-    if (mysqli_stmt_execute($stmt)) {
-        header('Location: tasks.php'); // Redirect to the tasks page after successful insertion
-        exit();
-    } else {
-        $error = true;
-        $error_message = "Error adding the task. Please try again.";
-    }
-
-    mysqli_stmt_close($stmt);
 }
 
 CloseCon($conn);
@@ -92,7 +104,7 @@ CloseCon($conn);
             <div class="input-field">
                 <label>
                     <h5>Due Date</h5>
-                    <input class="mar-bottom-8" type="date" name="due_date" id="due_date" placeholder="YYYY-MM-DD">
+                    <input class="mar-bottom-8" type="datetime-local" name="due_date" id="due_date" placeholder="YYYY-MM-DDTHH:MM">
                 </label>
                 <p id="due_date-error" class="error"></p>
             </div>

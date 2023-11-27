@@ -32,6 +32,9 @@ if ($row = mysqli_fetch_assoc($result)) {
     $description = $row['description'];
     $status = $row['status'];
     $due_date = $row['due_date'];
+
+    // Format the due_date for the datetime-local input
+    $due_date_value = date('Y-m-d\TH:i', strtotime($due_date));
 } else {
     // Display an error message and exit if the task is not found
     echo "Task not found.";
@@ -90,7 +93,7 @@ CloseCon($conn);
                 <!-- Input field for due date -->
                 <div class="input-field">
                     <label>Due Date</label>
-                    <input type="date" name="due_date" value="<?php echo htmlspecialchars($due_date); ?>">
+                    <input type="datetime-local" name="due_date" value="<?php echo htmlspecialchars($due_date_value); ?>">
                 </div>
 
                 <!-- Submit button for the form -->
