@@ -287,6 +287,12 @@ a.no-underline {
     margin-bottom: 16px;
   }
 }
+@media only screen and (max-width: 450px) {
+  .task-holder {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
 .task-holder .task {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;

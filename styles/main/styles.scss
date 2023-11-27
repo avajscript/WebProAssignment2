@@ -179,6 +179,7 @@ a.no-underline{
 
 .default-page {
   padding: 32px;
+
 }
 
 /* Responsive Design */
@@ -320,7 +321,11 @@ a.no-underline{
   @media only screen and (max-width:1000px) {
     margin-right: 8px;
     margin-left: 8px;
-  margin-bottom: 16px;
+    margin-bottom: 16px;
+  }
+  @media only screen and (max-width:450px) {
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .task {
