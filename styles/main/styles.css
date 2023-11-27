@@ -89,6 +89,49 @@ html {
 .header {
   padding: 16px 32px;
 }
+@media only screen and (max-width: 400px) {
+  .header {
+    padding: 8px 16px;
+  }
+}
+
+.mobile-nav {
+  position: relative;
+}
+.mobile-nav .nav-links {
+  transition: top 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+  display: flex;
+  background-color: var(--light-turq);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: absolute;
+  width: 200px;
+  align-items: flex-end;
+  flex-direction: column;
+  left: calc(-200px + 100%);
+}
+
+.show-nav {
+  opacity: 1 !important;
+}
+
+.hamburger-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--light-turq);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.25s ease;
+}
+.hamburger-icon:hover {
+  border: 2px solid var(--dark-turq);
+}
 
 a {
   text-decoration: none;
@@ -130,6 +173,21 @@ a.no-underline {
     padding: 16px;
   }
 }
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+}
+
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .mobile {
+    display: block;
+  }
+}
+
 /* End of Responsive Design */
 /* Signup page */
 .input-form {
