@@ -61,7 +61,7 @@ if (isset($_GET['id'])) {
     <main>
         <div class="default-page">
             <h1 class='mar-bottom-16'>Task Details</h1>
-            <div class="flex justify-center  ">
+            <div class=" flex align-center justify-center" >
             <div class="task-details task">
                 <div class="mar-bottom-16">
                     <div class="flex flex-column ">

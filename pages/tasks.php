@@ -39,7 +39,7 @@ if(isset($_SESSION['user_id'])) {
                 {$row['title']}
                 </h4>
                 
-                <p class='mar-bottom-8'>
+                <p class='mar-bottom-8 task-text'>
                 {$row['description']}
                 </p>
             <div>

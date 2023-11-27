@@ -245,6 +245,8 @@ a.no-underline{
 
   }
 }
+
+
 .task-holder {
 
   background-color: var(--white);
@@ -261,6 +263,7 @@ a.no-underline{
   }
 
   .task {
+
     cursor:pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 16px;
@@ -320,7 +323,7 @@ a.no-underline{
   background-color: #fff;
   border-radius: 16px;
   padding: 16px 24px;
-
+  max-width: 600px;
 }
 
 .grey-line {

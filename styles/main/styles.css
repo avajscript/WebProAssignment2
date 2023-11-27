@@ -284,6 +284,7 @@ a.no-underline {
   background-color: #fff;
   border-radius: 16px;
   padding: 16px 24px;
+  max-width: 600px;
 }
 
 .grey-line {
