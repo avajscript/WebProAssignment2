@@ -55,23 +55,52 @@ if (isset($_GET['id'])) {
     <title>Task Details</title>
 </head>
 <body>
-    <?php include('../components/header.php'); ?>
+    <?php include('../components/header.php');
+    [$dateElem, $state] = getDateElem($due_date);
+    ?>
     <main>
         <div class="default-page">
             <h1 class='mar-bottom-16'>Task Details</h1>
-            <div class="task-details">
-                <h2 class='mar-bottom-8'><?php echo $title; ?></h2>
-                <p class='mar-bottom-8'><?php echo $description; ?></p>
-                <p class='mar-bottom-8'>Status: <?php echo $status; ?></p>
-                <p class='mar-bottom-8'>Due Date: <?php echo $due_date; ?></p>
-                
+            <div class="flex justify-center  ">
+            <div class="task-details task">
+                <div class="mar-bottom-16">
+                    <div class="flex flex-column ">
+                        <div class="mar-bottom-8 flex justify-end">
+                        <?php
+                        echo getTimeStateElem($state);
+                        ?>
+                        </div>
+                <h2 class='mar-bottom-4'><?php echo $title; ?></h2>
+
+                    </div>
+                    <div class="mar-bottom-16"></div>
+                <p class='mar-bottom-16'><?php echo $description; ?></p>
+                <p class='mar-bottom-8'> <b> <?php echo $status; ?> </b></p>
+
+                    <?php
+                    echo $dateElem;
+                    ?>
+                </div>
                 <!-- Edit and Delete options -->
                 <div class="flex">
                     <!-- Link to Edit Task -->
-                    <a href="./edit_task.php?id=<?php echo $task_id; ?>" class="default-btn mar-right-8">Edit</a>
+                    <div class="mar-right-16">
+
+                        <a href="./edit_task.php?id=<?php echo $task_id; ?>" class=" icon">
+                            <img src = '../images/icons/edit.svg' alt = 'edit' />
+                        </a>
+                    </div>
+
                     <!-- Link to Delete Task -->
-                    <a href="./delete_task.php?id=<?php echo $task_id; ?>" class="default-btn delete-btn">Delete</a>
+                    <div class=" mar-right-8 icon">
+                    <a href="./delete_task.php?id=<?php echo $task_id; ?>">
+                        <img src="../images/icons/delete.svg" alt="delete">
+
+
+                    </a>
+                    </div>
                 </div>
+            </div>
             </div>
         </div>
     </main>

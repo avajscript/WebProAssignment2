@@ -264,7 +264,7 @@ display: flex;
   border-radius: 8px;
 }
 
-.date-normal {
+.date-upcoming {
   @extend .date;
   background-color: var(--light-yellow);
   p {
@@ -272,6 +272,13 @@ display: flex;
   }
 }
 
+.time-state {
+  padding: 8px 16px;
+  background-color: var(--white);
+  border-radius: 16px;
+  flex-shrink: 0;
+
+}
 .date-today {
   @extend .date;
   background-color: var(--light-green);
@@ -288,5 +295,34 @@ display: flex;
   }
 }
 
+.task {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px 24px;
 
+}
+
+.grey-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--grey);
+}
+
+.icon {
+
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color .25s ease;
+  &:hover {
+    background-color: var(--light-turq);
+  }
+  &:active {
+    background-color: var(--turq);
+  }
+
+}
 // End of tasks page

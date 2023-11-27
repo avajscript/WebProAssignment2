@@ -55,7 +55,7 @@ if(isset($_SESSION['user_id'])) {
                 case "date-today":
                     $todayTasks .= $task;
                     break;
-                case "date-normal":
+                case "date-upcoming":
                     $upcomingTasks .= $task;
                     break;
                 case "date-passed":

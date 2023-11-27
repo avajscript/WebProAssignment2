@@ -2,7 +2,7 @@
 date_default_timezone_set('UTC');
 // formats a date like so
 // Fri, Nov 12:00 AM
-function getDateElem($date) {
+function getDateElem(String $date):array {
     $class = "";
 
     $date = date_format(date_create($date), "D, M d, g:i A");
@@ -19,7 +19,7 @@ function getDateElem($date) {
             $class = 'date-today';
             // doesn't need to be done within 24 hours
         } else {
-            $class = 'date-normal';
+            $class = 'date-upcoming';
         }
     } else {
         $class = "date-passed";
@@ -30,4 +30,33 @@ function getDateElem($date) {
                 </p>
             </div>", $class];
 
+}
+
+function getTimeStateElem(String $timeState):String {
+    // text to be returned
+    $text = "";
+    $circleClass = "";
+    // set output text based on given one
+    switch ($timeState) {
+        case "date-passed":
+            $text = "Past due";
+            $circleClass = 'circle-red';
+            break;
+
+        case "date-upcoming":
+            $text = "Upcoming";
+            $circleClass = 'circle-yellow';
+            break;
+
+        case "date-today":
+            $text = "Today";
+            $circleClass = 'circle-green';
+            break;
+        default:
+            break;
+}
+    return "<div class ='flex align-center time-state'>
+            <div class='$circleClass mar-right-8'></div>
+            <h5 class = ''>$text</h5>
+    </div>";
 }

@@ -221,18 +221,25 @@ a.no-underline {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.date, .date-passed, .date-today, .date-normal {
+.date, .date-passed, .date-today, .date-upcoming {
   display: inline-block;
   width: auto;
   padding: 4px 8px;
   border-radius: 8px;
 }
 
-.date-normal {
+.date-upcoming {
   background-color: var(--light-yellow);
 }
-.date-normal p {
+.date-upcoming p {
   color: var(--red);
+}
+
+.time-state {
+  padding: 8px 16px;
+  background-color: var(--white);
+  border-radius: 16px;
+  flex-shrink: 0;
 }
 
 .date-today {
@@ -247,6 +254,34 @@ a.no-underline {
 }
 .date-passed p {
   color: var(--red);
+}
+
+.task {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px 24px;
+}
+
+.grey-line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--grey);
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: background-color 0.25s ease;
+}
+.icon:hover {
+  background-color: var(--light-turq);
+}
+.icon:active {
+  background-color: var(--turq);
 }
 
 /*# sourceMappingURL=styles.css.map */

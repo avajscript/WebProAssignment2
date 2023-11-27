@@ -18,6 +18,10 @@
     flex: 1;
 }
 
+
+.flex-column {
+    flex-direction: column;
+}
 .justify-center {
     justify-content: center;
 }
@@ -52,6 +56,9 @@
 
 /* Margins and Padding */
 
+.mar-bottom-4 {
+    margin-bottom: 4px;
+}
 .mar-bottom-8 {
     margin-bottom: 8px;
 }
