@@ -280,11 +280,28 @@ a.no-underline {
   color: var(--red);
 }
 
+select {
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+select:focus {
+  outline: 2px solid var(--turq);
+}
+
 .task {
   background-color: #fff;
   border-radius: 16px;
   padding: 16px 24px;
   max-width: 600px;
+}
+
+.task-center {
+  min-width: 600px;
+}
+@media only screen and (max-width: 660px) {
+  .task-center {
+    min-width: 100%;
+  }
 }
 
 .grey-line {

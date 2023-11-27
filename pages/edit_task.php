@@ -60,27 +60,41 @@ CloseCon($conn);
 
     <main>
         <div class="default-page">
-            <h1>Edit Task</h1>
+            <h1 class="mar-bottom-16">Edit Task</h1>
+            <div class="flex justify-center">
+
+
             <!-- Form for editing the task -->
-            <form action="update_task.php" method="post">
+            <form action="update_task.php" method="post" class="task task-center">
                 <!-- Hidden input to pass the task ID -->
                 <input type="hidden" name="task_id" value="<?php echo htmlspecialchars($task_id); ?>">
 
                 <!-- Input field for task title -->
                 <div class="input-field">
-                    <label>Title</label>
+                    <h5 class = 'mar-bottom-8'>
+                        <label>
+                            Title
+                        </label>
+                    </h5>
+
                     <input type="text" name="title" value="<?php echo htmlspecialchars($title); ?>">
                 </div>
 
                 <!-- Textarea for task description -->
                 <div class="input-field">
-                    <label>Description</label>
+                    <h5 class="mar-bottom-8">
+                        <label>Description</label>
+                    </h5>
+
                     <textarea name="description"><?php echo htmlspecialchars($description); ?></textarea>
                 </div>
 
                 <!-- Dropdown for task status -->
                 <div class="input-field">
-                    <label>Status</label>
+                    <h5 class="mar-bottom-8">
+                        <label>Status</label>
+                    </h5>
+
                     <select name="status">
                         <!-- Options for task status, with the current status selected -->
                         <option value="not started" <?php echo ($status == 'not started') ? 'selected' : ''; ?>>Not Started</option>
@@ -92,13 +106,22 @@ CloseCon($conn);
 
                 <!-- Input field for due date -->
                 <div class="input-field">
-                    <label>Due Date</label>
+                    <h5 class="mar-bottom-8">
+                        <label>Due Date</label>
+                    </h5>
+
                     <input type="datetime-local" name="due_date" value="<?php echo htmlspecialchars($due_date_value); ?>">
                 </div>
 
                 <!-- Submit button for the form -->
-                <button type="submit" class="default-btn">Save Changes</button>
+                <button type="submit" class="anti-default-white-btn">
+                    <h5>
+                        Save Changes
+                    </h5>
+
+                </button>
             </form>
+            </div>
         </div>
     </main>
 </body>
