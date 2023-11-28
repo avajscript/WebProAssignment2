@@ -15,13 +15,34 @@ $conn = OpenCon();
 $pastDueTasks = "";
 $upcomingTasks = "";
 $todayTasks = "";
+
 if(isset($_SESSION['user_id'])) {
     // initializing variables
 
     // get user id
     $user_id = $_SESSION['user_id'];
-    // fetch all users tasks
+    $search = $_GET['search'] ?? null;
+    $statusFilter = $_GET['status'] ?? null;
+    $dueDateFilter = $_GET['due_date'] ?? null;
+
+    // Start building the query
     $query = "SELECT * FROM tasks WHERE user_id = $user_id";
+
+    // Append search condition if search parameter is provided
+    if (!empty($search)) {
+        $query .= " AND (title LIKE '%$search%' OR description LIKE '%$search%')";
+    }
+
+    // Append status filter condition if status parameter is provided
+    if (!empty($statusFilter)) {
+        $query .= " AND status = '$statusFilter'";
+    }
+
+    // Append due date filter condition if due date parameter is provided
+    if (!empty($dueDateFilter)) {
+        $query .= " AND DATE(due_date) = '$dueDateFilter'";
+    }
+
     $result = mysqli_query($conn, $query);
 
     if($result) {
@@ -88,6 +109,28 @@ if(isset($_SESSION['user_id'])) {
         ?>
             <div class="default-page">
         <h1 class ='mar-bottom-16'>Your tasks</h1>
+
+        <!-- Search and Filter Form -->
+        <form action="tasks.php" method="get" class="input-form">
+            <div class="input-field">
+                <input type="text" name="search" placeholder="Search tasks" value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+            </div>
+            <div class="input-field">
+                <select name="status">
+                    <option value="">Any Status</option>
+                    <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>Not Started</option>
+                    <option value="in progress" <?php if (($_GET['status'] ?? '') == 'in progress') echo 'selected'; ?>>In Progress</option>
+                    <option value="completed" <?php if (($_GET['status'] ?? '') == 'completed') echo 'selected'; ?>>Completed</option>
+                    <option value="on hold" <?php if (($_GET['status'] ?? '') == 'on hold') echo 'selected'; ?>>On Hold</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input type="date" name="due_date" value="<?php echo htmlspecialchars($_GET['due_date'] ?? ''); ?>">
+            </div>
+            <button type="submit" class="default-btn">Search & Filter</button>
+        </form>
+        <!-- End of Search and Filter Form -->
+
         <div class="flex justify-end mar-bottom-32">
         <div class="anti-default-btn">
             <h5>
