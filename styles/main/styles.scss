@@ -219,7 +219,23 @@ a.no-underline{
   max-width: 800px;
   padding: 5% 10%;
   margin: 10% auto;
+}
 
+.filter-bar{
+  background-color: #fff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  .input-field{
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .flex-content {
+    margin-bottom: 16px;
+    gap: 8px;
+  }
 }
 
 /* End of signup page */
@@ -347,6 +363,19 @@ a.no-underline{
   }
 }
 
+.focus-search {
+  background-color: var(--light-turq);
+  border: 2px solid var(--turq);
+  max-width: 240px;
+  &:focus {
+    border: 2px solid var(--green);
+  }
+  &:not(:placeholder-shown) {
+    background-color: var(--white);
+  }
+
+}
+
 .date {
   display: inline-block;
   width: auto;
@@ -413,6 +442,7 @@ select {
   height: 1px;
   background-color: var(--grey);
 }
+
 
 .icon {
 

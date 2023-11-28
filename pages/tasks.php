@@ -1,6 +1,7 @@
 <!--Tasks.php -->
 <?php
 session_start();
+
 include "../server/db_connection.php";
 include "../server/functions.php";
 
@@ -23,7 +24,9 @@ if(isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $search = $_GET['search'] ?? null;
     $statusFilter = $_GET['status'] ?? null;
-    $dueDateFilter = $_GET['due_date'] ?? null;
+    $startDateFilter = $_GET['start_date'] ?? null;
+    $endDateFilter = $_GET['end_date'] ?? null;
+
 
     // Start building the query
     $query = "SELECT * FROM tasks WHERE user_id = $user_id";
@@ -39,8 +42,8 @@ if(isset($_SESSION['user_id'])) {
     }
 
     // Append due date filter condition if due date parameter is provided
-    if (!empty($dueDateFilter)) {
-        $query .= " AND DATE(due_date) = '$dueDateFilter'";
+    if (!empty($startDateFilter)) {
+        $query .= " AND DATE(due_date) >= '$startDateFilter' AND DATE(due_date) <= '$endDateFilter'";
     }
 
     $result = mysqli_query($conn, $query);
@@ -111,23 +114,42 @@ if(isset($_SESSION['user_id'])) {
         <h1 class ='mar-bottom-16'>Your tasks</h1>
 
         <!-- Search and Filter Form -->
-        <form action="tasks.php" method="get" class="input-form">
-            <div class="input-field">
-                <input type="text" name="search" placeholder="Search tasks" value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
-            </div>
-            <div class="input-field">
+        <form action="tasks.php" method="get" class="filter-bar mar-bottom-32">
+
+            <div class="flex flex-column align-start flex-content flex-row">
+                <div class="mar-bottom-8">
+                    <input class = 'focus-search' type="text" name="search" placeholder="Search tasks" value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+                </div>
+            <div class="">
                 <select name="status">
                     <option value="">Any Status</option>
-                    <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>Not Started</option>
-                    <option value="in progress" <?php if (($_GET['status'] ?? '') == 'in progress') echo 'selected'; ?>>In Progress</option>
+                    <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>Not Started</option><option value="in progress" <?php if (($_GET['status'] ?? '') == 'in progress') echo 'selected'; ?>>In Progress</option>
                     <option value="completed" <?php if (($_GET['status'] ?? '') == 'completed') echo 'selected'; ?>>Completed</option>
                     <option value="on hold" <?php if (($_GET['status'] ?? '') == 'on hold') echo 'selected'; ?>>On Hold</option>
                 </select>
             </div>
-            <div class="input-field">
-                <input type="date" name="due_date" value="<?php echo htmlspecialchars($_GET['due_date'] ?? ''); ?>">
+                <div class="mar-bottom-8 flex align-center">
+            <div class="mar-right-16">
+                <label>
+                    <p class = 'bold mar-bottom-4'>From</p>
+                    <input type="date" name="start_date" value="<?php echo htmlspecialchars($_GET['start_date'] ?? ''); ?>"
+                </label>
+
             </div>
-            <button type="submit" class="default-btn">Search & Filter</button>
+
+            <div class="">
+                <label>
+                    <p class="bold mar-bottom-4">To</p>
+                    <input type="date" name="end_date" value="<?php echo htmlspecialchars($_GET['end_date'] ?? ''); ?>">
+                </label>
+            </div>
+                </div>
+            </div>
+            <button type="submit" class="anti-default-btn ">
+
+                <h5 class = 'mar-right-8'>Search</h5>
+
+            </button>
         </form>
         <!-- End of Search and Filter Form -->
 

@@ -18,7 +18,12 @@
     flex: 1;
 }
 
-
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-row {
+    flex-direction: row;
+}
 .flex-column {
     flex-direction: column;
 }

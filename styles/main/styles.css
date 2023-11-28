@@ -198,6 +198,23 @@ a.no-underline {
   margin: 10% auto;
 }
 
+.filter-bar {
+  background-color: #fff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+.filter-bar .input-field {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.filter-bar .flex-content {
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
 /* End of signup page */
 /* Reusable */
 /* End of Reusable */
@@ -307,6 +324,18 @@ a.no-underline {
 }
 .task-holder .task:active {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.focus-search {
+  background-color: var(--light-turq);
+  border: 2px solid var(--turq);
+  max-width: 240px;
+}
+.focus-search:focus {
+  border: 2px solid var(--green);
+}
+.focus-search:not(:placeholder-shown) {
+  background-color: var(--white);
 }
 
 .date, .date-passed, .date-today, .date-upcoming {
