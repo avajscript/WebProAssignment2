@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('UTC');
+date_default_timezone_set('EST');
 // formats a date like so
 // Fri, Nov 12:00 AM
 function getDateElem(String $date):array {
