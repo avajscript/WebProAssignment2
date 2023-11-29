@@ -17,7 +17,7 @@ $pastDueTasks = "";
 $upcomingTasks = "";
 $todayTasks = "";
 
-if(isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) {
     // initializing variables
 
     // get user id
@@ -48,17 +48,34 @@ if(isset($_SESSION['user_id'])) {
 
     $result = mysqli_query($conn, $query);
 
-    if($result) {
+    if ($result) {
         // iterate over tasks, add styling and add to tasks string
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             // returns the colored date and state of the date (today, normal, passed)
             [$dateElem, $state] = getDateElem($row['due_date']);
+            // get the priority class styling. Uses same styling for dates
+            $priorityClass = $row['priority'] == 'low' ? 'bg-green' : ($row['priority'] == 'medium' ? 'bg-green' : 'bg-red');
             // date element
             $task_id = $row['task_id'];
             $task = "
            
             <a href='./task.php?id=$task_id' class='no-underline'>
-            <div class = 'task'>
+           
+            <div class = 'task task-small' >
+                <div class='priority $priorityClass'>
+                <div class = 'flex justify-end' >
+                <div >
+                    <p class='bold'>
+                        {$row['priority']}
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div style = 'padding: 8px 24px 16px'>
+            
+
+            
+                     
                 <h4 class = 'mar-bottom-8'>
                 {$row['title']}
                 </h4>
@@ -72,10 +89,11 @@ if(isset($_SESSION['user_id'])) {
                     </div>
                 </div>
             </div>
+            </div>
             </a>
             ";
             // push into today, upcoming or pastDue based on date
-            switch($state) {
+            switch ($state) {
                 case "date-today":
                     $todayTasks .= $task;
                     break;
@@ -107,95 +125,116 @@ if(isset($_SESSION['user_id'])) {
     </head>
     <body>
         <main>
-        <?php
-        include('../components/header.php');
-        ?>
+            <?php
+            include('../components/header.php');
+            ?>
             <div class="default-page">
-        <h1 class ='mar-bottom-16'>Your tasks</h1>
+                <h1 class='mar-bottom-16'>Your tasks</h1>
 
-        <!-- Search and Filter Form -->
-        <form action="tasks.php" method="get" class="filter-bar mar-bottom-32">
+                <!-- Search and Filter Form -->
+                <form action="tasks.php" method="get" class="filter-bar mar-bottom-32">
+                    <div class="mar-bottom-16">
+                        <input class='focus-search' type="text" name="search" placeholder="Search tasks"
+                               value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+                    </div>
+                    <div class="flex flex-column align-start flex-content flex-row">
 
-            <div class="flex flex-column align-start flex-content flex-row">
-                <div class="mar-bottom-8">
-                    <input class = 'focus-search' type="text" name="search" placeholder="Search tasks" value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>">
+                        <div class="">
+                            <select name="status">
+                                <option value="">Any Status</option>
+                                <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>
+                                    Not Started
+                                </option>
+                                <option value="in progress" <?php if (($_GET['status'] ?? '') == 'in progress') echo 'selected'; ?>>
+                                    In Progress
+                                </option>
+                                <option value="completed" <?php if (($_GET['status'] ?? '') == 'completed') echo 'selected'; ?>>
+                                    Completed
+                                </option>
+                                <option value="on hold" <?php if (($_GET['status'] ?? '') == 'on hold') echo 'selected'; ?>>
+                                    On Hold
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mar-bottom-8 flex align-center">
+                            <div class="mar-right-16">
+                                <label>
+                                    <p class='bold mar-bottom-4'>From</p>
+                                    <input type="date" name="start_date"
+                                           value="<?php echo htmlspecialchars($_GET['start_date'] ?? ''); ?>"
+                                </label>
+
+                            </div>
+
+                            <div class="">
+                                <label>
+                                    <p class="bold mar-bottom-4">To</p>
+                                    <input type="date" name="end_date"
+                                           value="<?php echo htmlspecialchars($_GET['end_date'] ?? ''); ?>">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="anti-default-btn ">
+
+                        <h5 class='mar-right-8'>Search</h5>
+
+                    </button>
+                </form>
+                <!-- End of Search and Filter Form -->
+
+                <div class="flex justify-end mar-bottom-32">
+                    <div class="anti-default-btn">
+                        <h5>
+
+                            <a href="./addtask.php">
+                                Add Task
+                            </a>
+                        </h5>
+
+                    </div>
+
                 </div>
-            <div class="">
-                <select name="status">
-                    <option value="">Any Status</option>
-                    <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>Not Started</option><option value="in progress" <?php if (($_GET['status'] ?? '') == 'in progress') echo 'selected'; ?>>In Progress</option>
-                    <option value="completed" <?php if (($_GET['status'] ?? '') == 'completed') echo 'selected'; ?>>Completed</option>
-                    <option value="on hold" <?php if (($_GET['status'] ?? '') == 'on hold') echo 'selected'; ?>>On Hold</option>
-                </select>
-            </div>
-                <div class="mar-bottom-8 flex align-center">
-            <div class="mar-right-16">
-                <label>
-                    <p class = 'bold mar-bottom-4'>From</p>
-                    <input type="date" name="start_date" value="<?php echo htmlspecialchars($_GET['start_date'] ?? ''); ?>"
-                </label>
-
-            </div>
-
-            <div class="">
-                <label>
-                    <p class="bold mar-bottom-4">To</p>
-                    <input type="date" name="end_date" value="<?php echo htmlspecialchars($_GET['end_date'] ?? ''); ?>">
-                </label>
-            </div>
-                </div>
-            </div>
-            <button type="submit" class="anti-default-btn ">
-
-                <h5 class = 'mar-right-8'>Search</h5>
-
-            </button>
-        </form>
-        <!-- End of Search and Filter Form -->
-
-        <div class="flex justify-end mar-bottom-32">
-        <div class="anti-default-btn">
-            <h5>
-
-                <a href="./addtask.php">
-                    Add Task
-                </a>
-            </h5>
-
-        </div>
-
-            </div>
                 <!-- Task section -->
                 <div class="task-section">
-            <div class="task-holder">
-                <div class="task-header">
-                    <div class="circle-red"></div>
-                     <h3>Past Due</h3>
-                </div>
-                <?php
-                echo $pastDueTasks;
-                ?>
-            </div>
-
-                <div class="task-holder">
-                    <div class="task-header">
-                        <div class="circle-yellow"></div>
-                    <h3>Upcoming</h3>
+                    <div class="task-holder">
+                        <div class="task-header  space-between">
+                            <div class='flex align-center'>
+                                <div class="circle-red"></div>
+                                <h3>Past Due</h3>
+                            </div>
+                            <h5 class="bold">Priority</h5>
+                        </div>
+                        <?php
+                        echo $pastDueTasks;
+                        ?>
                     </div>
-                    <?php
-                    echo $upcomingTasks;
-                    ?>
-                </div>
 
-                <div class="task-holder">
-                    <div class="task-header">
-                        <div class="circle-green"></div>
-                    <h3>Today</h3>
+                    <div class="task-holder">
+                        <div class="task-header space-between">
+                            <div class="flex align-center">
+                                <div class="circle-yellow"></div>
+                                <h3>Upcoming</h3>
+                            </div>
+                            <h5 class="bold">Priority</h5>
+                        </div>
+                        <?php
+                        echo $upcomingTasks;
+                        ?>
                     </div>
-                    <?php
-                    echo $todayTasks;
-                    ?>
-                </div>
+
+                    <div class="task-holder">
+                        <div class="task-header space-between">
+                            <div class="flex align-center">
+                                <div class="circle-green"></div>
+                                <h3>Today</h3>
+                            </div>
+                            <h5 class="bold">Priority</h5>
+                        </div>
+                        <?php
+                        echo $todayTasks;
+                        ?>
+                    </div>
 
                 </div>
                 <!-- End of task section -->

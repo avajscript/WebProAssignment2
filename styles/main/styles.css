@@ -93,7 +93,34 @@ label h5 {
   color: var(--green);
 }
 
+.bg-red {
+  background-color: var(--light-red) !important;
+}
+.bg-red p {
+  color: var(--red);
+}
+
+.bg-green {
+  background-color: var(--light-green) !important;
+}
+.bg-green p {
+  color: var(--green);
+}
+
+.bg-yellow {
+  background-color: var(--light-yellow) !important;
+}
+.bg-yellow p {
+  color: var(--yellow);
+}
+
 /* End of colors */
+.priority {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 16px 16px 0 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -347,7 +374,6 @@ a.no-underline {
 .focus-search {
   background-color: var(--light-turq);
   border: 2px solid var(--turq);
-  max-width: 240px;
 }
 .focus-search:focus {
   border: 2px solid var(--green);
@@ -404,6 +430,10 @@ select:focus {
   border-radius: 16px;
   padding: 16px 24px;
   max-width: 600px;
+}
+
+.task-small {
+  padding: 0 !important;
 }
 
 .task-center {
