@@ -205,11 +205,11 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                     <div class="flex space-between align-end">
                         <!-- Search button -->
-                        <button type="submit" class="anti-default-btn ">
+                        <button type="submit" class="anti-default-white-btn ">
                             <h5 class='mar-right-8'>Search</h5>
                         </button>
                         <!-- End of search button -->
-                        
+
                         <!-- Clear -->
                         <p class='underline' onclick="clearFilter()">
                             clear
