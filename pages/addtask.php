@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $status = $_POST['status'];
-    
+
     // Check if due_date is set and not empty
     if (!empty($_POST['due_date'])) {
         $due_date = $_POST['due_date'];
@@ -60,57 +60,82 @@ CloseCon($conn);
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='../styles/main/styles.css'>
-    <script src="../scripts/add_task.js" defer></script>
-    <title>Add Task</title>
-</head>
-<body>
-    <main>
-        <?php include("../components/header.php"); ?>
-        <form method="post" action="addtask.php" onsubmit="return validateForm()" class="input-form">
-            <div class="input-field">
-                <label>
-                    <h5>Title *</h5>
-                    <input class="mar-bottom-8" type="text" name="title" id="title" placeholder="Task title">
-                </label>
-                <p id="title-error" class="error"></p>
-            </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href='../styles/main/styles.css'>
+        <script src="../scripts/add_task.js" defer></script>
+        <title>Add Task</title>
+    </head>
+    <body>
+        <main>
+            <?php include("../components/header.php"); ?>
+            <?php include("../components/back.php") ?>
+            <form method="post" action="addtask.php" onsubmit="return validateForm()" class="input-form">
+                <!-- Title -->
+                <div class="input-field">
+                    <label>
+                        <h5>Title *</h5>
+                        <input type="text" name="title" id="title" placeholder="Task title">
+                    </label>
+                    <p id="title-error" class="error"></p>
+                </div>
+                <!-- End of description -->
 
-            <div class="input-field">
-                <label>
-                    <h5>Description</h5>
-                    <textarea class="mar-bottom-8" name="description" id="description" placeholder="Task description"></textarea>
-                </label>
-            </div>
+                <!-- Description -->
+                <div class="input-field">
+                    <label>
+                        <h5>Description</h5>
+                        <textarea name="description" id="description"
+                                  placeholder="Task description"></textarea>
+                    </label>
+                </div>
+                <!-- End of description -->
 
-            <div class="input-field">
-                <label>
-                    <h5>Status *</h5>
-                    <select class="mar-bottom-8" name="status" id="status">
-                        <option value="not started">Not Started</option>
-                        <option value="in progress">In Progress</option>
-                        <option value="completed">Completed</option>
-                        <option value="on hold">On Hold</option>
-                    </select>
-                </label>
-            </div>
+                <!-- Status & priority -->
+                <div class="input-field flex">
+                    <label class='mar-right-32'>
+                        <h5>Status </h5>
+                        <select name="status" id="status">
+                            <option value="not started">Not Started</option>
+                            <option value="in progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="on hold">On Hold</option>
+                        </select>
+                    </label>
+                    <label>
+                        <h5>Priority</h5>
+                        <select name="priority" id="status">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </label>
+                </div>
+                <!-- End of status & priority -->
 
-            <div class="input-field">
-                <label>
-                    <h5>Due Date</h5>
-                    <input class="mar-bottom-8" type="datetime-local" name="due_date" id="due_date" placeholder="YYYY-MM-DDTHH:MM">
-                </label>
-                <p id="due_date-error" class="error"></p>
-            </div>
+                <!-- Priority -->
+                <div class="input-field">
 
-            <p id="errorMessage" class="error mar-bottom-8"><?php echo $error ? $error_message : ''; ?></p>
-            <button class="anti-default-white-btn">
-                <h5>ADD TASK</h5>
-            </button>
-        </form>
-    </main>
-</body>
+                </div>
+                <!-- End of priority -->
+
+                <!-- Due date -->
+                <div class="input-field">
+                    <label>
+                        <h5>Due Date</h5>
+                        <input class="mar-bottom-8" type="datetime-local" name="due_date" id="due_date"
+                               placeholder="YYYY-MM-DDTHH:MM">
+                    </label>
+                    <p id="due_date-error" class="error"></p>
+                </div>
+                <!-- End of due date -->
+
+                <p id="errorMessage" class="error mar-bottom-8"><?php echo $error ? $error_message : ''; ?></p>
+                <button class="anti-default-white-btn">
+                    <h5>ADD TASK</h5>
+                </button>
+            </form>
+        </main>
+    </body>
 </html>

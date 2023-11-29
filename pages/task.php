@@ -40,61 +40,62 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/main/styles.css">
-    <title>Task Details</title>
-</head>
-<body>
-    <?php include('../components/header.php');
-    [$dateElem, $state] = getDateElem($due_date);
-    ?>
-    <main>
-        <div class="default-page">
-            <h1 class='mar-bottom-16'>Task Details</h1>
-            <div class=" flex align-center justify-center" >
-            <div class="task-details task">
-                <div class="mar-bottom-16">
-                    <div class="flex flex-column ">
-                        <div class="mar-bottom-8 flex justify-end">
-                        <?php
-                        echo getTimeStateElem($state);
-                        ?>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/main/styles.css">
+        <title>Task Details</title>
+    </head>
+    <body>
+        <?php include('../components/header.php');
+        [$dateElem, $state] = getDateElem($due_date);
+        ?>
+        <main>
+            <div class="default-page">
+                <h1 class='mar-bottom-16'>Task Details</h1>
+                <?php include("../components/back.php") ?>
+                <div class=" flex align-center justify-center">
+                    <div class="task-details task">
+                        <div class="mar-bottom-16">
+                            <div class="flex flex-column ">
+                                <div class="mar-bottom-8 flex justify-end">
+                                    <?php
+                                    echo getTimeStateElem($state);
+                                    ?>
+                                </div>
+                                <h2 class='mar-bottom-4'><?php echo $title; ?></h2>
+
+                            </div>
+                            <div class="mar-bottom-16"></div>
+                            <p class='mar-bottom-16'><?php echo $description; ?></p>
+                            <p class='mar-bottom-8'><b> <?php echo $status; ?> </b></p>
+
+                            <?php
+                            echo $dateElem;
+                            ?>
                         </div>
-                <h2 class='mar-bottom-4'><?php echo $title; ?></h2>
+                        <!-- Edit and Delete options -->
+                        <div class="flex">
+                            <!-- Link to Edit Task -->
+                            <div class="mar-right-16">
 
-                    </div>
-                    <div class="mar-bottom-16"></div>
-                <p class='mar-bottom-16'><?php echo $description; ?></p>
-                <p class='mar-bottom-8'> <b> <?php echo $status; ?> </b></p>
+                                <a href="./edit_task.php?id=<?php echo $task_id; ?>" class=" icon">
+                                    <img src='../images/icons/edit.svg' alt='edit'/>
+                                </a>
+                            </div>
 
-                    <?php
-                    echo $dateElem;
-                    ?>
-                </div>
-                <!-- Edit and Delete options -->
-                <div class="flex">
-                    <!-- Link to Edit Task -->
-                    <div class="mar-right-16">
-
-                        <a href="./edit_task.php?id=<?php echo $task_id; ?>" class=" icon">
-                            <img src = '../images/icons/edit.svg' alt = 'edit' />
-                        </a>
-                    </div>
-
-                    <!-- Link to Delete Task -->
-                    <div class=" mar-right-8 icon">
-                    <a href="./delete_task.php?id=<?php echo $task_id; ?>">
-                        <img src="../images/icons/delete.svg" alt="delete">
+                            <!-- Link to Delete Task -->
+                            <div class=" mar-right-8 icon">
+                                <a href="./delete_task.php?id=<?php echo $task_id; ?>">
+                                    <img src="../images/icons/delete.svg" alt="delete">
 
 
-                    </a>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
-    </main>
-</body>
+        </main>
+    </body>
 </html>
