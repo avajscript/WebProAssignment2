@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $status = $_POST['status'];
+    $priority = $_POST['priority'];
 
     // Check if due_date is set and not empty
     if (!empty($_POST['due_date'])) {
@@ -36,9 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user_id !== null) {
         // Insert the task into the database
-        $query = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO tasks (user_id, title, description, status, due_date, priority) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "issss", $user_id, $title, $description, $status, $due_date);
+        mysqli_stmt_bind_param($stmt, "isssss", $user_id, $title, $description, $status, $due_date, $priority);
 
         if (mysqli_stmt_execute($stmt)) {
             header('Location: tasks.php'); // Redirect to the tasks page after successful insertion
@@ -105,7 +106,7 @@ CloseCon($conn);
                     </label>
                     <label>
                         <h5>Priority</h5>
-                        <select name="priority" id="status">
+                        <select name="priority" id="priority">
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
                             <option value="high">High</option>
