@@ -146,6 +146,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="flex flex-column align-start flex-content flex-row">
 
                         <div class="">
+                            <!-- Status select -->
                             <select name="status" id='status' class=mar-right-16>
                                 <option value="">Any Status</option>
                                 <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>
@@ -161,7 +162,9 @@ if (isset($_SESSION['user_id'])) {
                                     On Hold
                                 </option>
                             </select>
+                            <!-- End of status select -->
 
+                            <!-- Priority select -->
                             <select name="priority" id='priority'>
                                 <option value="">Any Priority</option>
                                 <option value="low" <?php if (($_GET['priority'] ?? '') == 'low') echo 'selected'; ?>>
@@ -175,8 +178,11 @@ if (isset($_SESSION['user_id'])) {
                                 </option>
 
                             </select>
+                            <!-- End of priority select -->
+
                         </div>
-                        <div class="mar-bottom-8 flex align-center">
+                        <!-- Date selectors -->
+                        <div class="mar-bottom-8 flex align-center flex-wrap">
                             <div class="mar-right-16">
                                 <label>
                                     <p class='bold mar-bottom-4'>From</p>
@@ -195,14 +201,20 @@ if (isset($_SESSION['user_id'])) {
                                 </label>
                             </div>
                         </div>
+                        <!-- End of date selectors -->
                     </div>
                     <div class="flex space-between align-end">
+                        <!-- Search button -->
                         <button type="submit" class="anti-default-btn ">
                             <h5 class='mar-right-8'>Search</h5>
                         </button>
+                        <!-- End of search button -->
+                        
+                        <!-- Clear -->
                         <p class='underline' onclick="clearFilter()">
                             clear
                         </p>
+                        <!-- End of clear -->
                     </div>
 
                 </form>
