@@ -9,6 +9,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+// class used to style the priority at top of task
+$priorityClass = "";
 
 $conn = OpenCon();
 
@@ -26,6 +28,9 @@ if (isset($_GET['id'])) {
         $description = $row['description'];
         $status = $row['status'];
         $due_date = $row['due_date'];
+        $priority = $row['priority'];
+        // set priority class based on priority
+        $priorityClass = $priority == 'low' ? 'bg-green' : ($priority == 'medium' ? 'bg-yellow' : 'bg-red');
     } else {
         // Task not found or unauthorized access
         header("Location: tasks.php");
@@ -55,42 +60,61 @@ if (isset($_GET['id'])) {
                 <h1 class='mar-bottom-16'>Task Details</h1>
                 <?php include("../components/back.php") ?>
                 <div class=" flex align-center justify-center">
-                    <div class="task-details task">
-                        <div class="mar-bottom-16">
-                            <div class="flex flex-column ">
-                                <div class="mar-bottom-8 flex justify-end">
-                                    <?php
-                                    echo getTimeStateElem($state);
-                                    ?>
-                                </div>
-                                <h2 class='mar-bottom-4'><?php echo $title; ?></h2>
+                    <div class="task-details task task-small">
 
-                            </div>
-                            <div class="mar-bottom-16"></div>
-                            <p class='mar-bottom-16'><?php echo $description; ?></p>
-                            <p class='mar-bottom-8'><b> <?php echo $status; ?> </b></p>
-
-                            <?php
-                            echo $dateElem;
-                            ?>
+                        <div class="priority flex justify-end <?php echo $priorityClass ?>">
+                            <p>
+                                <?php
+                                echo $priority;
+                                ?>
+                            </p>
                         </div>
-                        <!-- Edit and Delete options -->
-                        <div class="flex">
-                            <!-- Link to Edit Task -->
-                            <div class="mar-right-16">
+                        <div style='padding: 8px 24px 16px;'>
+                            <div class="mar-bottom-16">
+                                <div class="flex flex-column ">
+                                    <!-- Time (upcoming, today, past due) -->
+                                    <div class="mar-bottom-8 flex justify-end">
+                                        <?php
+                                        echo getTimeStateElem($state);
 
-                                <a href="./edit_task.php?id=<?php echo $task_id; ?>" class=" icon">
-                                    <img src='../images/icons/edit.svg' alt='edit'/>
-                                </a>
+                                        ?>
+                                    </div>
+                                    <!-- End of time -->
+
+                                    <!-- Title, description and status -->
+                                    <h2 class='mar-bottom-4'><?php echo $title; ?></h2>
+
+                                </div>
+                                <div class="mar-bottom-16"></div>
+                                <p class='mar-bottom-16'><?php echo $description; ?></p>
+                                <p class='mar-bottom-8'><b> <?php echo $status; ?> </b></p>
+                                <!-- End of title, description and status -->
+
+                                <!-- Date ->
+                            <?php
+                                echo $dateElem;
+                                ?>
+                            <!-- End of date -->
+
                             </div>
+                            <!-- Edit and Delete options -->
+                            <div class="flex">
+                                <!-- Link to Edit Task -->
+                                <div class="mar-right-16">
 
-                            <!-- Link to Delete Task -->
-                            <div class=" mar-right-8 icon">
-                                <a href="./delete_task.php?id=<?php echo $task_id; ?>">
-                                    <img src="../images/icons/delete.svg" alt="delete">
+                                    <a href="./edit_task.php?id=<?php echo $task_id; ?>" class=" icon">
+                                        <img src='../images/icons/edit.svg' alt='edit'/>
+                                    </a>
+                                </div>
+
+                                <!-- Link to Delete Task -->
+                                <div class=" mar-right-8 icon">
+                                    <a href="./delete_task.php?id=<?php echo $task_id; ?>">
+                                        <img src="../images/icons/delete.svg" alt="delete">
 
 
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
