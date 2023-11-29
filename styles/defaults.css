@@ -21,18 +21,25 @@
 .flex-wrap {
     flex-wrap: wrap;
 }
+
 .flex-row {
     flex-direction: row;
 }
+
 .flex-column {
     flex-direction: column;
 }
+
 .justify-center {
     justify-content: center;
 }
 
 .align-center {
     align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
 }
 
 .align-start {
@@ -64,6 +71,7 @@
 .mar-bottom-4 {
     margin-bottom: 4px;
 }
+
 .mar-bottom-8 {
     margin-bottom: 8px;
 }

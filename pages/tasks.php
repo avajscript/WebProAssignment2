@@ -26,6 +26,7 @@ if (isset($_SESSION['user_id'])) {
     $statusFilter = $_GET['status'] ?? null;
     $startDateFilter = $_GET['start_date'] ?? null;
     $endDateFilter = $_GET['end_date'] ?? null;
+    $priorityFilter = $_GET['priority'] ?? null;
 
 
     // Start building the query
@@ -40,6 +41,11 @@ if (isset($_SESSION['user_id'])) {
     if (!empty($statusFilter)) {
         $query .= " AND status = '$statusFilter'";
     }
+    // Append priority filter condition if priority parameter is provided
+    if (!empty($priorityFilter)) {
+        $query .= " AND priority = '$priorityFilter'";
+    }
+
 
     // Append due date filter condition if due date parameter is provided
     if (!empty($startDateFilter)) {
@@ -140,7 +146,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="flex flex-column align-start flex-content flex-row">
 
                         <div class="">
-                            <select name="status">
+                            <select name="status" id='status' class=mar-right-16>
                                 <option value="">Any Status</option>
                                 <option value="not started" <?php if (($_GET['status'] ?? '') == 'not started') echo 'selected'; ?>>
                                     Not Started
@@ -155,12 +161,26 @@ if (isset($_SESSION['user_id'])) {
                                     On Hold
                                 </option>
                             </select>
+
+                            <select name="priority" id='priority'>
+                                <option value="">Any Priority</option>
+                                <option value="low" <?php if (($_GET['priority'] ?? '') == 'low') echo 'selected'; ?>>
+                                    Low
+                                </option>
+                                <option value="medium" <?php if (($_GET['priority'] ?? '') == 'medium') echo 'selected'; ?>>
+                                    Medium
+                                </option>
+                                <option value="high" <?php if (($_GET['priority'] ?? '') == 'high') echo 'selected'; ?>>
+                                    High
+                                </option>
+
+                            </select>
                         </div>
                         <div class="mar-bottom-8 flex align-center">
                             <div class="mar-right-16">
                                 <label>
                                     <p class='bold mar-bottom-4'>From</p>
-                                    <input type="date" name="start_date"
+                                    <input type="date" name="start_date" id='from'
                                            value="<?php echo htmlspecialchars($_GET['start_date'] ?? ''); ?>"
                                 </label>
 
@@ -170,16 +190,21 @@ if (isset($_SESSION['user_id'])) {
                                 <label>
                                     <p class="bold mar-bottom-4">To</p>
                                     <input type="date" name="end_date"
+                                           id='to'
                                            value="<?php echo htmlspecialchars($_GET['end_date'] ?? ''); ?>">
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="anti-default-btn ">
+                    <div class="flex space-between align-end">
+                        <button type="submit" class="anti-default-btn ">
+                            <h5 class='mar-right-8'>Search</h5>
+                        </button>
+                        <p class='underline' onclick="clearFilter()">
+                            clear
+                        </p>
+                    </div>
 
-                        <h5 class='mar-right-8'>Search</h5>
-
-                    </button>
                 </form>
                 <!-- End of Search and Filter Form -->
 
@@ -240,5 +265,20 @@ if (isset($_SESSION['user_id'])) {
                 <!-- End of task section -->
             </div>
         </main>
+        <script>
+            // getting elements from the search filter
+            const searchBar = document.querySelector(".focus-search");
+            const status = document.getElementById('status');
+            const from = document.getElementById('from');
+            const to = document.getElementById('to');
+
+            // clear all values in search filter elements
+            const clearFilter = () => {
+                searchBar.value = '';
+                status.value = '';
+                from.value = '';
+                to.value = '';
+            }
+        </script>
     </body>
 </html>
