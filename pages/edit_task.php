@@ -32,6 +32,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     $description = $row['description'];
     $status = $row['status'];
     $due_date = $row['due_date'];
+    $priority = $row['priority'];
 
     // Format the due_date for the datetime-local input
     $due_date_value = date('Y-m-d\TH:i', strtotime($due_date));
@@ -92,25 +93,49 @@ CloseCon($conn);
 
                         <!-- Dropdown for task status -->
                         <div class="input-field">
-                            <h5 class="mar-bottom-8">
-                                <label>Status</label>
-                            </h5>
+                            <div class="flex align-center">
+                                <!-- Status -->
+                                <label class='mar-right-16'>
+                                    <h5 class="mar-bottom-8">
+                                        <label>Status</label>
+                                    </h5>
 
-                            <select name="status">
-                                <!-- Options for task status, with the current status selected -->
-                                <option value="not started" <?php echo ($status == 'not started') ? 'selected' : ''; ?>>
-                                    Not Started
-                                </option>
-                                <option value="in progress" <?php echo ($status == 'in progress') ? 'selected' : ''; ?>>
-                                    In Progress
-                                </option>
-                                <option value="completed" <?php echo ($status == 'completed') ? 'selected' : ''; ?>>
-                                    Completed
-                                </option>
-                                <option value="on hold" <?php echo ($status == 'on hold') ? 'selected' : ''; ?>>On
-                                    Hold
-                                </option>
-                            </select>
+                                    <select name="status">
+                                        <!-- Options for task status, with the current status selected -->
+                                        <option value="not started" <?php echo ($status == 'not started') ? 'selected' : ''; ?>>
+                                            Not Started
+                                        </option>
+                                        <option value="in progress" <?php echo ($status == 'in progress') ? 'selected' : ''; ?>>
+                                            In Progress
+                                        </option>
+                                        <option value="completed" <?php echo ($status == 'completed') ? 'selected' : ''; ?>>
+                                            Completed
+                                        </option>
+                                        <option value="on hold" <?php echo ($status == 'on hold') ? 'selected' : ''; ?>>
+                                            On
+                                            Hold
+                                        </option>
+                                    </select>
+                                </label>
+                                <!-- End of status -->
+
+                                <!-- Priority -->
+                                <label>
+                                    <h5>Priority</h5>
+                                    <select name="priority" id="priority">
+                                        <option value="low" <?php echo ($priority == 'low') ? 'selected' : ''; ?>>Low
+                                        </option>
+                                        <option value="medium" <?php echo ($priority == 'medium') ? 'selected' : ''; ?>>
+                                            Medium
+                                        </option>
+                                        <option value="high" <?php echo ($priority == 'high') ? 'selected' : ''; ?>>
+                                            High
+                                        </option>
+                                    </select>
+                                </label>
+                                <!-- End of priority -->
+                            </div>
+
                         </div>
 
                         <!-- Input field for due date -->

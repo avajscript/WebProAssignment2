@@ -20,31 +20,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];     // The updated title of the task
     $description = $_POST['description']; // The updated description
     $status = $_POST['status'];   // The updated status
-    
+    $priority = $_POST['priority']; // The updates priority
     // Check if due_date is set and not empty
     if (!empty($_POST['due_date'])) {
         $due_date = $_POST['due_date'];
 
         // Check if the time part is included in the due_date
         if (strlen($due_date) <= 10) {
-        // If only date is provided, append the default time '23:59:00'
+            // If only date is provided, append the default time '23:59:00'
             $due_date .= ' 23:59:00';
         }
 
         // Convert the date and time to MySQL DATETIME format
         $due_date = date('Y-m-d H:i:s', strtotime($due_date));
     } else {
-    // Handle the case where due_date is not provided
-    // This depends on your application logic
+        // Handle the case where due_date is not provided
+        // This depends on your application logic
     }
 
     // Prepare the SQL query for updating the task
-    $query = "UPDATE tasks SET title=?, description=?, status=?, due_date=? WHERE task_id=? AND user_id=?";
+    $query = "UPDATE tasks SET title=?, description=?, status=?, due_date=?, priority=? WHERE task_id=? AND user_id=?";
     $stmt = mysqli_prepare($conn, $query);
 
     // Bind parameters to the prepared statement
     // "ssssii" denotes the types of the variables: s (string), i (integer)
-    mysqli_stmt_bind_param($stmt, "ssssii", $title, $description, $status, $due_date, $task_id, $_SESSION['user_id']);
+    mysqli_stmt_bind_param($stmt, "sssssii", $title, $description, $status, $due_date, $priority, $task_id, $_SESSION['user_id']);
 
     // Execute the prepared statement
     mysqli_stmt_execute($stmt);
