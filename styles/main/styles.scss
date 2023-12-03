@@ -374,6 +374,7 @@ a.no-underline {
   grid-template-columns: repeat(3, 1fr);
   max-width: 1200px;
   margin: 0 auto;
+  align-items: start;
   @media only screen and (max-width: 800px) {
     grid-template-columns: repeat(2, 1fr);
     & > :last-child {
@@ -388,6 +389,7 @@ a.no-underline {
     }
 
   }
+
 }
 
 

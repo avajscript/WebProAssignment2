@@ -1,5 +1,9 @@
 <?php
 date_default_timezone_set('EST');
+
+// CHANGE: change today to actually today?
+
+
 // formats a date like so
 // Fri, Nov 12:00 AM
 function getDateElem(String $date):array {
