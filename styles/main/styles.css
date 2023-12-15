@@ -1,9 +1,9 @@
 /* Styling for fonts like font-family and sizing */
-@import '../fonts.css';
+@import "../fonts.css";
 /* Button styling */
-@import '../buttons/buttons.css';
+@import "../buttons/buttons.css";
 /* Reusable font classes */
-@import '../defaults.css';
+@import "../defaults.css";
 .black-icon {
   color: var(--black);
 }
@@ -26,7 +26,8 @@
   border: 2px solid var(--dark-turq);
 }
 .back:active {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 /* Colors
@@ -34,18 +35,20 @@ Re-use these colors throughout the css so they can be changed and for clarity
  */
 :root {
   --dark-turq: #194759;
-  --turq: #7AC2BB;
-  --light-turq: #A7F2E4;
-  --white: #EBF2F1;
+  --turq: #7ac2bb;
+  --light-turq: #a7f2e4;
+  --white: #ebf2f1;
   --black: #111212;
-  --grey: #8E8E8E;
-  --desat-green: #4F7369;
-  --red: #CB4343;
+  --grey: #8e8e8e;
+  --desat-green: #4f7369;
+  --red: #cb4343;
   --light-red: #f6bebe;
-  --green: #43D262;
+  --green: #43d262;
   --light-green: #cbf6d4;
-  --yellow: #C7D243;
-  --light-yellow: #FEFFD7;
+  --yellow: #c7d243;
+  --light-yellow: #feffd7;
+  --light-orange: #ffe6b3;
+  --orange: orange;
 }
 
 /* Inputs */
@@ -57,7 +60,8 @@ Re-use these colors throughout the css so they can be changed and for clarity
   border: 2px solid var(--red);
 }
 
-input, textarea {
+input,
+textarea {
   font-size: 16px;
   border-radius: 8px;
   border: 2px solid transparent;
@@ -66,12 +70,13 @@ input, textarea {
   max-width: 400px;
   width: 100%;
 }
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border: 2px solid var(--turq);
 }
 
-input[type=datetime-local] {
+input[type="datetime-local"] {
   max-width: 200px;
 }
 
@@ -112,6 +117,14 @@ label h5 {
 }
 .bg-yellow p {
   color: var(--yellow);
+}
+
+.bg-orange {
+  background-color: var(--light-orange);
+}
+
+.bg-orange p {
+  color: var(--orange);
 }
 
 /* End of colors */
@@ -287,7 +300,10 @@ a.no-underline {
   color: var(--red);
 }
 
-.circle, .circle-green, .circle-yellow, .circle-red {
+.circle,
+.circle-green,
+.circle-yellow,
+.circle-red {
   width: 8px;
   height: 8px;
   margin-right: 16px;
@@ -374,7 +390,8 @@ a.no-underline {
   background-color: var(--light-turq);
 }
 .task-holder .task:active {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 .focus-search {
@@ -388,7 +405,10 @@ a.no-underline {
   background-color: var(--white);
 }
 
-.date, .date-passed, .date-today, .date-upcoming {
+.date,
+.date-passed,
+.date-today,
+.date-upcoming {
   display: inline-block;
   width: auto;
   padding: 4px 8px;

@@ -1,7 +1,6 @@
 <!--Tasks.php -->
 <?php
 session_start();
-
 include "../server/db_connection.php";
 include "../server/functions.php";
 
@@ -18,49 +17,60 @@ $upcomingTasks = "";
 $todayTasks = "";
 
 if (isset($_SESSION['user_id'])) {
-    // initializing variables
+    // Initializing variables
+$user_id = $_SESSION['user_id'];
+$search = $_GET['search'] ?? null;
+$statusFilter = $_GET['status'] ?? null;
+$startDateFilter = $_GET['start_date'] ?? null;
+$endDateFilter = $_GET['end_date'] ?? null;
+$priorityFilter = $_GET['priority'] ?? null; // Adding null coalescing operator for priority
 
-    // get user id
-    $user_id = $_SESSION['user_id'];
-    $search = $_GET['search'] ?? null;
-    $statusFilter = $_GET['status'] ?? null;
-    $startDateFilter = $_GET['start_date'] ?? null;
-    $endDateFilter = $_GET['end_date'] ?? null;
-    $priorityFilter = $_GET['priority'] ?? null;
+// Start building the query
+$query = "SELECT * FROM tasks WHERE user_id = $user_id";
 
+// Append search condition if search parameter is provided
+if (!empty($search)) {
+    $query .= " AND (title LIKE '%$search%' OR description LIKE '%$search%')";
+}
 
-    // Start building the query
-    $query = "SELECT * FROM tasks WHERE user_id = $user_id";
+// Append status filter condition if status parameter is provided
+if (!empty($statusFilter)) {
+    $query .= " AND status = '$statusFilter'";
+}
 
-    // Append search condition if search parameter is provided
-    if (!empty($search)) {
-        $query .= " AND (title LIKE '%$search%' OR description LIKE '%$search%')";
-    }
+// Append priority filter condition if priority parameter is provided
+if (!empty($priorityFilter)) { // Ensuring priority is set before appending it to the query
+    $query .= " AND priority = '$priorityFilter'";
+}
 
-    // Append status filter condition if status parameter is provided
-    if (!empty($statusFilter)) {
-        $query .= " AND status = '$statusFilter'";
-    }
-    // Append priority filter condition if priority parameter is provided
-    if (!empty($priorityFilter)) {
-        $query .= " AND priority = '$priorityFilter'";
-    }
+// Append due date filter condition if both start and end date parameters are provided
+if (!empty($startDateFilter) && !empty($endDateFilter)) {
+    $query .= " AND DATE(due_date) >= '$startDateFilter' AND DATE(due_date) <= '$endDateFilter'";
+}
 
-
-    // Append due date filter condition if due date parameter is provided
-    if (!empty($startDateFilter)) {
-        $query .= " AND DATE(due_date) >= '$startDateFilter' AND DATE(due_date) <= '$endDateFilter'";
-    }
-
-    $result = mysqli_query($conn, $query);
+$result = mysqli_query($conn, $query);
 
     if ($result) {
-        // iterate over tasks, add styling and add to tasks string
-        while ($row = mysqli_fetch_assoc($result)) {
-            // returns the colored date and state of the date (today, normal, passed)
-            [$dateElem, $state] = getDateElem($row['due_date']);
-            // get the priority class styling. Uses same styling for dates
-            $priorityClass = $row['priority'] == 'low' ? 'bg-green' : ($row['priority'] == 'medium' ? 'bg-green' : 'bg-red');
+    // iterate over tasks, add styling and add to tasks string
+    while ($row = mysqli_fetch_assoc($result)) {
+        // returns the colored date and state of the date (today, normal, passed)
+        [$dateElem, $state] = getDateElem($row['due_date']);
+        
+        // Get the priority class styling
+        switch ($row['priority']) {
+            case 'low':
+                $priorityClass = 'bg-green'; // Green for low priority
+                break;
+            case 'medium':
+                $priorityClass = 'bg-orange'; // Orange for medium priority
+                break;
+            case 'high':
+                $priorityClass = 'bg-red'; // Red for high priority
+                break;
+            default:
+                $priorityClass = 'bg-green'; // Default to green if no priority is set
+                break;
+        }
             // date element
             $task_id = $row['task_id'];
             $task = "
